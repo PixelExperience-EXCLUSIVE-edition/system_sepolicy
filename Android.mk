@@ -79,17 +79,6 @@ else
 mixed_sepolicy_build :=
 endif
 
-NEVERALLOW_ARG :=
-ifeq ($(SELINUX_IGNORE_NEVERALLOWS),true)
-ifeq ($(TARGET_BUILD_VARIANT),user)
-$(error SELINUX_IGNORE_NEVERALLOWS := true cannot be used in user builds)
-endif
-$(warning Be careful when using the SELINUX_IGNORE_NEVERALLOWS flag. \
-          It does not work in user builds and using it will \
-          not stop you from failing CTS.)
-NEVERALLOW_ARG := -N
-endif
-
 # BOARD_SEPOLICY_DIRS was used for vendor/odm sepolicy customization before.
 # It has been replaced by BOARD_VENDOR_SEPOLICY_DIRS (mandatory) and
 # BOARD_ODM_SEPOLICY_DIRS (optional). BOARD_SEPOLICY_DIRS is still allowed for
